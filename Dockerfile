@@ -15,7 +15,6 @@ ENV SHELL=/bin/bash \
 
 RUN apk add --update --no-cache \
           xvfb \
-          firefox \
           libx11 \
           unzip \
           gcc \
