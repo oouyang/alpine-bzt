@@ -5,7 +5,7 @@ ENV SHELL=/bin/bash \
     WORK_USER="bzt" \
     WORK_HOME="/home/bzt" 
 
-apk add --update --no-cache \
+RUN apk add --update --no-cache \
   gcc \
   bash \
   curl \
