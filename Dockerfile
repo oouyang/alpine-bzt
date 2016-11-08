@@ -20,6 +20,7 @@ RUN apk add --update --no-cache \
           ttf-dejavu \
           unzip \
           gcc \
+          make \
           bash \
           curl \
           wget \
