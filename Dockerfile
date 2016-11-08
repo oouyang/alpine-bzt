@@ -38,7 +38,6 @@ RUN apk add --update --no-cache \
   addgroup -g ${gid} ${group} && \
   adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
   echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    apk add --update x11vnc --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted && \
     apk add --update chromium chromium-chromedriver --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted && \
     rm -rf /var/cache/apk/*
   
