@@ -56,13 +56,13 @@ RUN apk add --update --no-cache \
   pip install bzt locustio selenium && \
   pip install --upgrade selenium && \
   npm install -g mocha && \
-  gem install selenium-webdriver && \
   gem install rspec && \
   addgroup -g ${gid} ${group} && \
   adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
   echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     rm -rf /var/cache/apk/*
 
+#  gem install selenium-webdriver && \
 #  apk add x11vnc --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/  --allow-untrusted && \
 USER ${WORK_USER}
 
