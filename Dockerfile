@@ -4,8 +4,8 @@ MAINTAINER Owen Ouyang <owen.ouyang@live.com>
 ENV SHELL=/bin/bash \
     WORK_USER="bzt" \
     WORK_HOME="/home/bzt" \
-    user=$WORK_USER \
-    group=$WORK_USER \
+    user=bzt \
+    group=bzt \
     uid=1000 \
     gid=1000 
 
