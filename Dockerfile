@@ -22,6 +22,8 @@ RUN apk add --update --no-cache \
           curl \
           wget \
           sudo \
+          ruby ruby-dev \
+          nodejs \
           python-dev \
           py-pip \
           py-psutil \
@@ -34,7 +36,11 @@ RUN apk add --update --no-cache \
           libxslt-dev \
           linux-headers && \
   pip install --upgrade pip setuptools && \
-  pip install bzt && \
+  pip install bzt locustio selenium && \
+  pip install --upgrade selenium && \
+  npm install -g mocha && \
+  gem install rspec && \
+  gem install selenium-webdriver && \
   addgroup -g ${gid} ${group} && \
   adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
   echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
