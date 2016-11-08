@@ -3,12 +3,11 @@ MAINTAINER Owen Ouyang <owen.ouyang@live.com>
 
 ENV SHELL=/bin/bash \
     WORK_USER="bzt" \
-    WORK_HOME="/home/bzt" 
-
-ARG user=$WORK_USER
-ARG group=$WORK_USER
-ARG uid=1000
-ARG gid=1000
+    WORK_HOME="/home/bzt" \
+    user=$WORK_USER \
+    group=$WORK_USER \
+    uid=1000 \
+    gid=1000 
 
 RUN apk add --update --no-cache \
           gcc \
