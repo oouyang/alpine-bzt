@@ -9,7 +9,15 @@ ENV SHELL=/bin/bash \
     uid=1000 \
     gid=1000 
 
+ADD http://chromedriver.storage.googleapis.com/2.25/chromedriver_linux64.zip /tmp
+ADD https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.11.1-linux64.tar.gz /tmp
+ADD https://dl-ssl.google.com/linux/linux_signing_key.pub /tmp
+
 RUN apk add --update --no-cache \
+          xvfb \
+          firefox \
+          libx11 \
+          unzip \
           gcc \
           bash \
           curl \
@@ -30,7 +38,11 @@ RUN apk add --update --no-cache \
   pip install bzt && \
   addgroup -g ${gid} ${group} && \
   adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
-  echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+  echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    apk add --update x11vnc --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted && \
+    apk add --update chromium chromium-chromedriver --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted && \
+    rm -rf /var/cache/apk/*
+  
 
 USER ${WORK_USER}
 
