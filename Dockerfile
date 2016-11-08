@@ -15,18 +15,32 @@ ENV SHELL=/bin/bash \
 #ADD https://dl-ssl.google.com/linux/linux_signing_key.pub /tmp
 
 RUN apk add --update --no-cache \
+          lxdm \
+          s6 \
+          setxkbmap \
+          udev \
+          vino \
+          xf86-input-evdev \
+          xf86-input-keyboard \
+          xf86-input-mouse \
+          xfce4 \
+          xinit \
+          xorg-server \
           xvfb \
           libx11 \
           ttf-dejavu \
           unzip \
           gcc \
           make \
+          git \
           bash \
           curl \
           wget \
           sudo \
           ruby ruby-dev \
           nodejs \
+          chromium chromium-chromedriver \
+          xrdp \
           python-dev \
           py-pip \
           py-psutil \
@@ -47,7 +61,6 @@ RUN apk add --update --no-cache \
   addgroup -g ${gid} ${group} && \
   adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
   echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    apk add --update chromium chromium-chromedriver --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted && \
     rm -rf /var/cache/apk/*
 
 #  apk add x11vnc --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/  --allow-untrusted && \
@@ -57,7 +70,7 @@ USER ${WORK_USER}
 #RUN x11vnc -storepasswd okmwsx12345E ~/.vnc/passwd
   
 #Expose ports (VNC)
-EXPOSE 5900
+EXPOSE 3389
 
 
 WORKDIR ${WORK_HOME}
