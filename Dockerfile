@@ -14,7 +14,7 @@ ENV SHELL=/bin/bash \
 #ADD https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.11.1-linux64.tar.gz /tmp
 #ADD https://dl-ssl.google.com/linux/linux_signing_key.pub /tmp
 
-ADD quick_test.yml /tmp
+COPY quick_test.yml /tmp
 
 WORKDIR $WORK_HOME
 
