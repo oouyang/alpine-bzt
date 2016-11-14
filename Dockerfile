@@ -14,22 +14,8 @@ ENV SHELL=/bin/bash \
 #ADD https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.11.1-linux64.tar.gz /tmp
 #ADD https://dl-ssl.google.com/linux/linux_signing_key.pub /tmp
 
-#ADD quick_test.yml /tmp
+ADD quick_test.yml /tmp/quick_test.yml
 WORKDIR $WORK_HOME
-
-RUN  cat << EOF > /tmp/quick_test.yml 
----
-execution:
-  - concurrency: 2
-    ramp-up: 10s
-    hold-for: 30s
-    scenario: quick-test
-
-scenarios:
-  quick-test:
-    requests:
-      - http://blazedemo.com
-EOF
 
 RUN apk add --update --no-cache \
           lxdm \
