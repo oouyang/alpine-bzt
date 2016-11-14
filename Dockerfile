@@ -13,12 +13,8 @@ ENV SHELL=/bin/bash \
 #ADD http://chromedriver.storage.googleapis.com/2.25/chromedriver_linux64.zip /tmp
 #ADD https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.11.1-linux64.tar.gz /tmp
 #ADD https://dl-ssl.google.com/linux/linux_signing_key.pub /tmp
-RUN   addgroup -g ${gid} ${group} && \
-  adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
-  mkdir -p "$WORK_HOME" && chown ${user} "$WORK_HOME" && \
-  echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-COPY quick_test.yml $WORK_HOME
+ADD quick_test.yml /tmp
 WORKDIR $WORK_HOME
 
 RUN apk add --update --no-cache \
@@ -64,8 +60,12 @@ RUN apk add --update --no-cache \
   pip install --upgrade selenium && \
   npm install -g mocha && \
   gem install rspec && \
+  addgroup -g ${gid} ${group} && \
+  adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
+  mkdir -p "$WORK_HOME" && chown ${user} "$WORK_HOME" && \
+  echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
   rm -rf /var/cache/apk/* && \
-  bzt quick_test.yml && \
+  bzt /tmp/quick_test.yml && \
   rm -r $WORK_HOME/*-*-*_*-*-*.* && \
   chmod a+x .bzt/jmeter-taurus/bin/jmeter .bzt/jmeter-taurus/bin/jmeter-server .bzt/jmeter-taurus/bin/*.sh && \
   ln -s .bzt/jmeter-taurus/bin/jmeter && \
