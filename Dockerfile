@@ -67,10 +67,12 @@ RUN apk add --update --no-cache \
   echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
   rm -rf /var/cache/apk/* && \
   bzt quick_test.yml && \
-  rm -r $WORK_HOME/*-*-*_*-*-*.* && \
-  chmod a+x .bzt/jmeter-taurus/bin/jmeter .bzt/jmeter-taurus/bin/jmeter-server .bzt/jmeter-taurus/bin/*.sh && \
-  ln -s .bzt/jmeter-taurus/bin/jmeter && \
-  ln -s .bzt/jmeter-taurus/bin/jmeter-server
+  rm -r $WORK_HOME/*-*-*_*-*-*.* 
+  
+#  && \
+#  chmod a+x .bzt/jmeter-taurus/bin/jmeter .bzt/jmeter-taurus/bin/jmeter-server .bzt/jmeter-taurus/bin/*.sh && \
+#  ln -s .bzt/jmeter-taurus/bin/jmeter && \
+#  ln -s .bzt/jmeter-taurus/bin/jmeter-server
 
 #  gem install rspec && \
 #  gem install selenium-webdriver && \
