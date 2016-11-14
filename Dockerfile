@@ -62,8 +62,9 @@ RUN apk add --update --no-cache \
   gem install rspec && \
   addgroup -g ${gid} ${group} && \
   adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
+  mkdir "$WORK_HOME" && chown ${user} "$WORK_HOME" && \
   echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    rm -rf /var/cache/apk/* && \
+  rm -rf /var/cache/apk/* && \
   bzt quick_test.yml && \
   rm -r $WORK_HOME/*-*-*_*-*-*.* && \
   chmod a+x .bzt/jmeter-taurus/bin/jmeter .bzt/jmeter-taurus/bin/jmeter-server .bzt/jmeter-taurus/bin/*.sh && \
