@@ -60,7 +60,6 @@ RUN apk add --update --no-cache \
   pip install bzt locustio selenium && \
   pip install --upgrade selenium && \
   npm install -g mocha && \
-  gem install rspec && \
   cp /root/quick_test.yml $WORK_HOME && \
   addgroup -g ${gid} ${group} && \
   adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
@@ -73,6 +72,7 @@ RUN apk add --update --no-cache \
   ln -s .bzt/jmeter-taurus/bin/jmeter && \
   ln -s .bzt/jmeter-taurus/bin/jmeter-server
 
+#  gem install rspec && \
 #  gem install selenium-webdriver && \
 #  apk add x11vnc --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/  --allow-untrusted && \
 USER ${WORK_USER}
