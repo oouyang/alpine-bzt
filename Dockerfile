@@ -15,7 +15,7 @@ ENV SHELL=/bin/bash \
 #ADD https://dl-ssl.google.com/linux/linux_signing_key.pub /tmp
 RUN   addgroup -g ${gid} ${group} && \
   adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
-  mkdir "$WORK_HOME" && chown ${user} "$WORK_HOME" && \
+  mkdir -p "$WORK_HOME" && chown ${user} "$WORK_HOME" && \
   echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 COPY quick_test.yml $WORK_HOME
