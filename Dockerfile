@@ -14,6 +14,9 @@ ENV SHELL=/bin/bash \
 #ADD https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.11.1-linux64.tar.gz /tmp
 #ADD https://dl-ssl.google.com/linux/linux_signing_key.pub /tmp
 
+COPY quick_test.yml $WORK_HOME
+WORKDIR $WORK_HOME
+
 RUN apk add --update --no-cache \
           lxdm \
           s6 \
@@ -60,7 +63,12 @@ RUN apk add --update --no-cache \
   addgroup -g ${gid} ${group} && \
   adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
   echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    rm -rf /var/cache/apk/*
+    rm -rf /var/cache/apk/* && \
+  bzt quick_test.yml && \
+  rm -r $WORK_HOME/*-*-*_*-*-*.* && \
+  chmod a+x .bzt/jmeter-taurus/bin/jmeter .bzt/jmeter-taurus/bin/jmeter-server .bzt/jmeter-taurus/bin/*.sh && \
+  ln -s .bzt/jmeter-taurus/bin/jmeter && \
+  ln -s .bzt/jmeter-taurus/bin/jmeter-server
 
 #  gem install selenium-webdriver && \
 #  apk add x11vnc --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/  --allow-untrusted && \
