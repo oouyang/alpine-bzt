@@ -18,6 +18,17 @@ ENV SHELL=/bin/bash \
 WORKDIR $WORK_HOME
 
 RUN  cat << EOF > /tmp/quick_test.yml 
+---
+execution:
+  - concurrency: 2
+    ramp-up: 10s
+    hold-for: 30s
+    scenario: quick-test
+
+scenarios:
+  quick-test:
+    requests:
+      - http://blazedemo.com
 EOF
 
 RUN apk add --update --no-cache \
