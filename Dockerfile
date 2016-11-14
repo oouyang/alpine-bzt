@@ -67,7 +67,8 @@ RUN apk add --update --no-cache \
   echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
   rm -rf /var/cache/apk/* && \
   bzt quick_test.yml && \
-  rm -r $WORK_HOME/*-*-*_*-*-*.* 
+  echo nameserver 8.8.8.8 >> /etc/resolv.conf
+#rm -r $WORK_HOME/*-*-*_*-*-*.* 
   
 #  && \
 #  chmod a+x .bzt/jmeter-taurus/bin/jmeter .bzt/jmeter-taurus/bin/jmeter-server .bzt/jmeter-taurus/bin/*.sh && \
