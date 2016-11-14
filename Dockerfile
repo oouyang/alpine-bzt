@@ -14,7 +14,8 @@ ENV SHELL=/bin/bash \
 #ADD https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.11.1-linux64.tar.gz /tmp
 #ADD https://dl-ssl.google.com/linux/linux_signing_key.pub /tmp
 
-ADD quick_test.yml /tmp/
+ADD quick_test.yml /tmp
+
 WORKDIR $WORK_HOME
 
 RUN apk add --update --no-cache \
@@ -80,6 +81,3 @@ USER ${WORK_USER}
   
 #Expose ports (VNC)
 EXPOSE 3389
-
-
-WORKDIR ${WORK_HOME}
