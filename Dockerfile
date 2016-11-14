@@ -14,7 +14,7 @@ ENV SHELL=/bin/bash \
 #ADD https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.11.1-linux64.tar.gz /tmp
 #ADD https://dl-ssl.google.com/linux/linux_signing_key.pub /tmp
 
-COPY quick_test.yml /tmp
+COPY quick_test.yml /root/
 
 WORKDIR $WORK_HOME
 
@@ -61,6 +61,7 @@ RUN apk add --update --no-cache \
   pip install --upgrade selenium && \
   npm install -g mocha && \
   gem install rspec && \
+  cp /root/quick_test.yml $WORK_HOME && \
   addgroup -g ${gid} ${group} && \
   adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
   mkdir -p "$WORK_HOME" && chown ${user} "$WORK_HOME" && \
