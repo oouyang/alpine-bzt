@@ -84,4 +84,4 @@ USER ${WORK_USER}
 #RUN x11vnc -storepasswd okmwsx12345E ~/.vnc/passwd
   
 #Expose ports (VNC)
-EXPOSE 3389
+EXPOSE 3389 22
