@@ -31,6 +31,9 @@ RUN apk add --update --no-cache \
           xinit \
           xorg-server \
           xvfb \
+          dbus-x11 \
+          ttf-freefont \
+          firefox-esr \
           libx11 \
           ttf-dejavu \
           unzip \
@@ -44,7 +47,9 @@ RUN apk add --update --no-cache \
           sudo \
           ruby ruby-dev \
           nodejs \
-          chromium chromium-chromedriver \
+          chromium \
+          chromium-chromedriver \
+          libexif \
           xrdp \
           python-dev \
           py-pip \
