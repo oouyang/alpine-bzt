@@ -9,3 +9,7 @@ scenarios:
   quick-test:
     requests:
       - http://blazedemo.com
+
+reporting:
+- module: blazemeter
+- module: junit-xml
