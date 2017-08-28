@@ -35,6 +35,7 @@ RUN apk add --update --no-cache \
           ttf-dejavu \
           unzip \
           gcc \
+          build-base \
           make \
           git \
           bash \
@@ -60,6 +61,7 @@ RUN apk add --update --no-cache \
   pip install bzt locustio selenium && \
   pip install --upgrade selenium && \
   npm install -g mocha && \
+  apk del build-base musl-dev bzip2-dev openssl-dev linux-headers libxslt-dev libxml2-dev fuse-dev icu-dev python-dev ruby-dev gcc make \
   cp /root/quick_test.yml $WORK_HOME && \
   addgroup -g ${gid} ${group} && \
   adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
