@@ -42,13 +42,11 @@ RUN apk add --update --no-cache \
   pip install bzt locustio selenium && \
   pip install --upgrade selenium && \
   npm install -g mocha && \
-  apk del build-base musl-dev bzip2-dev openssl-dev linux-headers libxslt-dev libxml2-dev fuse-dev icu-dev python-dev ruby-dev gcc make && \
-  cp /root/quick_test.yml $WORK_HOME && \
-  addgroup -g ${gid} ${group} && \
-  adduser -h "$WORK_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user} && \
-  mkdir -p "$WORK_HOME" && chown ${user} "$WORK_HOME" && \
-  echo "${WORK_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+  mkdir -p "$WORK_HOME" \
   rm -rf /var/cache/apk/* && \
-  bzt quick_test.yml && \
+  bzt /root/quick_test.yml && \
+  apk del build-base musl-dev bzip2-dev openssl-dev \
+          linux-headers libxslt-dev \
+          fuse-dev icu-dev python-dev ruby-dev && \
   mkdir /root/bzt
 
