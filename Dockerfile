@@ -1,13 +1,7 @@
 FROM java:8-jre-alpine
 MAINTAINER Owen Ouyang <owen.ouyang@live.com>
 
-ENV SHELL=/bin/bash \
-    WORK_USER="bzt" \
-    WORK_HOME="/root/bzt" \
-    user=bzt \
-    group=bzt \
-    uid=1000 \
-    gid=1000 
+ENV WORK_HOME="/root/bzt" 
 
 COPY quick_test.yml /root/
 
