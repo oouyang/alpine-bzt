@@ -47,6 +47,5 @@ RUN apk add --update --no-cache \
   bzt /root/quick_test.yml && \
   apk del build-base musl-dev bzip2-dev openssl-dev \
           linux-headers libxslt-dev \
-          fuse-dev icu-dev python-dev ruby-dev && \
-  mkdir /root/bzt
+          fuse-dev icu-dev python-dev ruby-dev 
 
