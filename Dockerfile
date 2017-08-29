@@ -42,7 +42,7 @@ RUN apk add --update --no-cache \
   pip install bzt locustio selenium && \
   pip install --upgrade selenium && \
   npm install -g mocha && \
-  mkdir -p "$WORK_HOME" \
+  mkdir -p "$WORK_HOME" && \
   rm -rf /var/cache/apk/* && \
   bzt /root/quick_test.yml && \
   apk del build-base musl-dev bzip2-dev openssl-dev \
