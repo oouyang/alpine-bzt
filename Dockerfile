@@ -45,7 +45,7 @@ RUN apk add --update --no-cache \
   mkdir -p "$WORK_HOME" && \
   rm -rf /var/cache/apk/* && \
   bzt /root/quick_test.yml && \
-  apk del build-base musl-dev bzip2-dev openssl-dev \
+  apk del --update --no-cache build-base musl-dev bzip2-dev openssl-dev \
           linux-headers libxslt-dev \
           fuse-dev icu-dev python-dev ruby-dev 
 
